@@ -1,0 +1,35 @@
+header, footer {
+    background-color: #f0f8ff;
+    padding: 15px;
+}
+header {
+    text-align: right;
+}
+footer {
+    text-align: left;
+}
+button { 
+    color: white;
+    background-color: blue;
+    padding: 15px;
+}
+
+.content {
+    border: #6495ed 1px solid;
+    margin: 20px;
+    padding: 15px;
+}
+.section {
+    margin: 10px;
+    background-color: #f5f5dc;
+}
+.content button {
+    background-color: brown;
+    color: white;
+    padding: 5px;
+}
+.content > button {
+    background-color: white;
+    color: blue;
+}
+
