@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab 1.3.5</title>
+<style type="text/css">
+body {
+	background-image: url(world-map.png);
+}
+	.absolute {
+		background: red;
+		position: absolute;
+		height: 200px;
+		width: 400px;
+	}
+	.fixed{
+		background: grey;
+		position: fixed;
+		height: 200px;
+		width: 300px;
+	}
+	.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 5px;
+  width: 200px;
+  height: 150px;
+  margin-top: 10px;
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+<div hidden="true" class="absolute">Здесь располагается содержимое  class "absolute"</div>
+<div hidden="" class="fixed">Здесь располагается содержимое  class "fixed"</div>
+<!-- FlexBox Technology -->
+
+<ul class="flex-container">
+  <li class="flex-item">1</li>
+  <li class="flex-item">2</li>
+  <li class="flex-item">3</li>
+  <li class="flex-item">4</li>
+  <li class="flex-item">5</li>
+  <li class="flex-item">6</li>
+</ul>
+</body>
+</html>
