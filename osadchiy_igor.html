@@ -36,15 +36,19 @@
 </table>
 	<br><br>
 <form action="./add-city" target="_blank" method="post" novalidate>
-		<fieldset style="width:980px; padding: 10px;">
+	<fieldset style="width:980px; padding: 10px;">
 		<label>Name</label>
-   		<input type="text" name="name"><br><br>
+		<select name="Name">
+			<option>Kiev</option>
+			<option selected="selected">Lviv</option>
+			<option>Odessa</option>
+		</select><br><br>
 		<label>Country</label>
-   		<input type="text" name="Country"><br><br>
+   		<input type="text" name="Country" value="Ukraine"><br><br>
 		<label>Description</label>
    		<input type="text" name="Description"><br><br>
-		<button type="submit">Submit</button><br>
+		<button type="submit">Submit</button><br><br>
 	</fieldset>
-  </form>
+</form>
 </body>
 </html>
