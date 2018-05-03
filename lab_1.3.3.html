@@ -2,7 +2,35 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Lab Work 1.3.2 (1/2)</title>
+<title>Lab Work 1.3.2-1.3.3</title>
+<style type="text/css">
+h1 {text-align: center;}
+table {
+	margin: auto;
+	border-collapse: collapse;
+	}
+fieldset {
+	width: 250px;
+	padding: 10px;
+	margin: auto;
+	background-color: #80B3FF;
+	border-radius: 5px;
+	}
+label {
+	font-family: 'Century Gothic';
+	color: aliceblue;
+}
+input, select {
+	float: right;
+	width: 250px;
+}
+input {width: 150px;}
+select {width: 154px;}
+.submit {
+	margin: 0;
+	text-align: center;
+}
+</style>
 </head>
 
 <body>
@@ -36,7 +64,7 @@
 </table>
 	<br><br>
 <form action="./add-city" target="_blank" method="post" novalidate>
-	<fieldset style="width:980px; padding: 10px;">
+	<fieldset>
 		<label>Name</label>
 		<select name="Name">
 			<option>Kiev</option>
@@ -44,10 +72,10 @@
 			<option>Odessa</option>
 		</select><br><br>
 		<label>Country</label>
-   		<input type="text" name="Country" value="Ukraine"><br><br>
+   		<input type="text" name="Country" placeholder="Country"><br><br>
 		<label>Description</label>
-   		<input type="text" name="Description"><br><br>
-		<button type="submit">Submit</button><br><br>
+   		<input type="text" name="Description" placeholder="Description"><br><br>
+		<p class="submit"><button type="submit">Submit</button></p>
 	</fieldset>
 </form>
 </body>
