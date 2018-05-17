@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab 1.3.9</title>
+<style type="text/css">
+body, input, button {
+	font-family: "sans-serif";
+}
+header {
+	display: flex;
+	padding: 11px;
+	background-color: #6495ed;
+}
+input {
+	background-color: #ff6347;
+	color: white;
+	padding: 10px;
+	margin-right: 8px;
+	border-style: none;
+}
+#Sign_In {
+	margin-left: auto;
+}
+section {
+	display: flex;
+	padding: 10px;
+}
+article {
+	display: inline-flex;
+	padding: 15px;
+}
+.description {
+	background-color: #f5f5dc;
+	flex-grow: 1;
+}
+.fixwidth {
+	border: solid 1px #faebd7;
+	background-color: #fffaf0;
+}
+.fixwidth, .jobs_title {
+	flex: 0 0 200px;
+}
+.jobs_title {
+	margin-right: 15px;
+	color: white;
+	background: #a52a2a;
+}
+.jobs_descr {
+	background: #d2691e;
+	color: white;
+}
+button {
+	background: #a52a2a;
+	border: #8b0000 1px solid;
+	border-radius: 5px;
+	color: white;
+	align-self: flex-end;
+	padding: 10px;
+}
+</style>
+</head>
+
+<body>
+	<header>
+		<input name="Services" type="button" id="Services" value="Services">
+		<input name="Events" type="button" id="Events" value="Events">
+		<input name="Events" type="button" id="Sign_In" value="Sign In">
+	</header>
+	<h2>Events</h2>
+	<section class="events">
+		<article class="description">Description</article>
+		<article class="fixwidth">Date</article>
+		<article class="fixwidth">Price</article>
+	</section>
+	<section class="events">
+		<article class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</article>
+		<article class="fixwidth">15.09.2016</article>
+		<article class="fixwidth">57$</article>
+	</section>
+	<section class="events">
+		<article class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</article>
+		<article class="fixwidth">15.09.2016</article>
+		<article class="fixwidth">57$</article>
+	</section>
+	<h2>Jobs</h2>
+	<section class="jobs">
+		<article class="jobs_title">Developer</article>
+		<article class="jobs_descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in cu
+      	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in cu
+      		<button>Apply</button>
+		</article>
+	</section>
+	<section class="jobs">
+		<article class="jobs_title">Designer</article>
+		<article class="jobs_descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in cu
+      	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in cu
+      		<button>Apply</button>
+		</article>
+	</section>
+</body>
+</html>
