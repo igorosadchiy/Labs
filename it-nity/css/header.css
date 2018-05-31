@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px;
+}
+.navigation__item {
+  margin-left: 50px;
+  font-size: 20px;
+  font-weight: 300;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.navigation__item-current {
+  padding: 10px 34px;
+  background-color: white;
+  border-radius: 5px;
+  color: #02ccd6;
+}
