@@ -1,75 +1,133 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>IT-nity</title>
-<link href="css/main.css" rel="stylesheet" type="text/css">
+	<meta charset="utf-8">
+	<title>IT-nity</title>
+	<!--[if lt IE 9]>
+	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="noindex,nofollow">
+	<!--<link href="css/main.css" rel="stylesheet" type="text/css">-->
+	<link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="wrapper">
-    <header class="header">
-		<img class="logo" src="img/docs_logo_white.svg" alt=""/>
-        <nav class="navigation">
-			<a class="navigation__item" href="#" target="_blank">Work</a>
-			<a class="navigation__item" href="#" target="_blank">Services</a>
-			<a class="navigation__item" href="#" target="_blank">About</a>
-			<a class="navigation__item" href="#" target="_blank">Blog</a>
-			<a class="navigation__item navigation__item-current" href="#" target="_blank">Let’s talk</a>
-		</nav>
-    </header>
-    <div class="hero">
-        <img class="hero__logo" src="img/logo_hero.svg" alt=""/>
-    </div>
-    <div class="bg_content">
-        <div class="bg_content__rectangle bg_content__rectangle-1"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-2"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-3"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-4"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-5"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-6"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-7"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-8"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-9"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-10"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-11"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-12"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-13"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-14"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-15"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-16"></div>
-		<div class="bg_content__rectangle bg_content__rectangle-17"></div>
-		<div class="content">
-            <div class="content__item">
-                <img src="img/teamwork.svg" alt=""/>
-            </div>
-            <div class="content__item">
-                <h2>Passionate about product.</h2>
-                <p>We are product pros with decades of experience shipping user-friendly apps for successful companies. We started IT-nity to bring that experience to the agency world. We love the craft of software and we don't follow the traditional "outsider" company model.</p>
-                <p>You bring your existing team (if you have one). Our senior practitioners will jump right in at your speed or level up your team if they’re more on the junior side. We pride ourselves on fitting in and working closely with your team to deliver great products. That’s our passion.</p>
-            </div>
-            <div class="content__item">
-                <h2>Our Philosophy</h2>
-                <p><b>STRONG OPINIONS, LOOSELY HELD</b><br>
-                    We have lots of experience (and opinions!) about building products. We’ll give you our opinion on how to build, but we know enough to be flexible in every situation.<br>
-                    <br>
-                    <b>TECHNOLOGY IS AN ENABLER</b><br>
-                    Technology enables great experiences. We like and use technology but we have tried hard to not fall in love with it. We don’t prescribe a single technology and use that on all projects because that it ultimately limiting. Instead, we assess each situation and its constraints to determine which technology is most appropriate for the job.<br>
-                    <br>
-                    <b>CUSTOMERS DETERMINE HAPPINESS</b><br>
-                    We’re not happy until our client *and their customers* are happy. While we strive to make all of our clients happy (100% of our clients are referrals) we keep pushing until we know that the end users are happy as well.<br>
-                    <br>
-                    <b>DEPENDABLE, HONEST, &amp; TRUSTWORTHY</b><br>
-                    These are the qualities we admire in others and hold as ideals for ourselves. When we were hiring agencies in our previous careers we wanted these qualities and so we strive every day to deliver them.</p>
-            </div>
-            <div class="content__item">
-                <img src="img/thinking.svg" alt=""/>
-            </div>
+	<header class="header">
+		<div class="container">
+			<a class="header-logo__link" href="#" target="_self">
+				<img class="header-logo__image" src="img/logo.svg" alt=""/>
+			</a>
+			<nav class="navbar">
+				<a class="navbar__link" href="#" target="_self">Work</a>
+				<a class="navbar__link" href="#" target="_self">Services</a>
+				<a class="navbar__link" href="#" target="_self">About</a>
+				<a class="navbar__link" href="#" target="_self">Blog</a>
+				<a class="navbar__link navbar__link--button" href="#" target="_self">Let’s talk</a>
+			</nav>
+		</div>	
+	</header>
+	<section class="hero">
+		<img class="hero__logo" src="img/logo.svg" alt=""/>
+	</section>
+	<section class="articles">
+		<div class="container">
+			<div class="articles-row">
+				<img class="articles__image" src="img/article_1_teamwork.svg" alt=""/>
+				<article class="articles__text">
+					<h3 class="articles__text--h3">Passionate about product.</h3>
+					<p class="articles__text--p">
+						We are product pros with decades of experience shipping user-friendly apps for successful companies. We started IT-nity to bring that experience to the agency world. We love the craft of software and we don't follow the traditional "outsider" company model.<br>
+						<br>
+						You bring your existing team (if you have one). Our senior practitioners will jump right in at your speed or level up your team if they’re more on the junior side. We pride ourselves on fitting in and working closely with your team to deliver great products. That’s our passion.
+					</p>
+				</article>
+			</div>
+			<div class="articles-row">
+				<img class="articles__image" src="img/article_2_thinking.svg" alt=""/>
+				<div class="articles__text">
+					<h3 class="articles__text--h3">Our Philosophy</h3>
+					<p class="articles__text--p">
+						<b>STRONG OPINIONS, LOOSELY HELD</b><br>
+						We have lots of experience (and opinions!) about building products. We’ll give you our opinion on how to build, but we know enough to be flexible in every situation.<br>
+						<br>
+						<b>TECHNOLOGY IS AN ENABLER</b><br>
+						Technology enables great experiences. We like and use technology but we have tried hard to not fall in love with it. We don’t prescribe a single technology and use that on all projects because that it ultimately limiting. Instead, we assess each situation and its constraints to determine which technology is most appropriate for the job.<br>
+						<br>
+						<b>CUSTOMERS DETERMINE HAPPINESS</b><br>
+						We’re not happy until our client *and their customers* are happy. While we strive to make all of our clients happy (100% of our clients are referrals) we keep pushing until we know that the end users are happy as well.<br>
+						<br>
+						<b>DEPENDABLE, HONEST, &amp; TRUSTWORTHY</b><br>
+						These are the qualities we admire in others and hold as ideals for ourselves. When we were hiring agencies in our previous careers we wanted these qualities and so we strive every day to deliver them.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="separator">
+    		<svg class="separator__svg" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#02ccd6" version="1.1" xmlns="http://www.w3.org/2000/svg">
+       			<path d="M 100 100 V 10 L 0 100"/>
+      		</svg>
+  		</div>
+	</section>
+	<section class="team">
+		<div class="container">
+			<div class="team-row">
+			    <div class="team__avatar">
+				    <img class="team__avatar--img" src="img/avatar_mp.png" alt=""/>
+			    </div>
+				<article class="team__info">
+					<h3 class="team__info--h3">Michael Poremsky</h3>
+					<p class="team__info--p">CEO, Co-Founder</p>
+				</article>
+		    </div>
+			<div class="team-row">
+				<article class="team__info">
+					<h3 class="team__info--h3">Boris Sagan</h3>
+					<p class="team__info--p">CTO, Co-Founder</p>
+				</article>
+				<div class="team__avatar">
+				    <img class="team__avatar--img" src="img/avatar_bs.png" alt=""/>
+			    </div>
+		    </div>
+			<div class="team-row">
+			    <div class="team__avatar">
+				    <img class="team__avatar--img" src="img/avatar_nd.png" alt=""/>
+			    </div>
+				<article class="team__info">
+					<h3 class="team__info--h3">Nazar Dub</h3>
+					<p class="team__info--p">Tech Lead, Java Developer</p>
+				</article>
+		    </div>
         </div>
-    </div>
-    <div class="team">
-        Здесь располагается содержимое  class "team"
-    </div>
-    <footer class="footer"> footer </footer>
-</div>
+	</section>
+	<footer class="footer">
+        <div class="container">
+            <article class="footer__contact">
+				<h3 class="footer__contact--h3">Let's build something great.</h3>
+				<p class="footer__contact--p">If you have an app that needs to be designed and built,<br>contact us at business@it-nity.com</p>
+            </article>
+			<section class="footer-row">
+				<div class="footer-logo">
+					<a class="footer-logo__link" href="#" target="_self">
+						<img class="footer-logo__image" src="img/logo.svg" alt=""/>
+					</a>
+				</div>
+				<p class="copyright">© 2017 IT-nity. All rights reserved</p>
+				<div class="social">
+					<a class="social__link" href="#" target="_self">
+						<img class="social__image" src="img/sc_facebook.svg" alt=""/>
+					</a>
+					<a class="social__link" href="#" target="_self">
+						<img class="social__image" src="img/sc_twitter.svg" alt=""/>
+					</a>
+					<a class="social__link" href="#" target="_self">
+						<img class="social__image" src="img/sc_linkedin.svg" alt=""/>
+					</a>
+					<a class="social__link" href="#" target="_self">
+						<img class="social__image" src="img/sc_skype.svg" alt=""/>
+					</a>
+				</div>
+			</section>
+        </div>
+	</footer>
 </body>
 </html>
