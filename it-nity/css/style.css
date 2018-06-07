@@ -6,12 +6,11 @@ body, html {
   	font-family: Ubuntu, sans-serif;
 }
 body {
-	font-size: 100%;
     overflow-x: hidden;
 }
 
 .container {
-	max-width: 1200px;
+	width: 100%;
 	margin: 0 auto;
 	padding: 40px;
 	display: flex;
@@ -52,6 +51,22 @@ body {
 .navbar__link--button:hover {
 	text-decoration: none;
 }
+.header-button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	display: none;
+}
+.header-button-container {
+	padding: 15px;
+}
+.header-button__hr {
+	width: 40px;
+    height: 4px;
+	margin: 5px 0;
+	border-radius: 4px;
+	background: #fff;
+}
 .hero {
 	display: flex;
 	justify-content: center;
@@ -60,7 +75,7 @@ body {
 	height: 100vh;
 	min-height: 430px;
 	background: #02ccd6 url(../img/bg_hero.svg) no-repeat;
-	background-position: center;
+	background-position: bottom right;
 	background-size: cover;
 }
 .articles {
@@ -69,6 +84,7 @@ body {
 	position: relative;
 }
 .articles .container {
+	max-width: 1200px;
 	flex-direction: column;
 }
 .articles-row {
@@ -80,18 +96,12 @@ body {
 .articles-row:nth-child(2) {
 	flex-direction: row-reverse;
 }
-.articles__image {
-	/*margin: 5px;
-	flex-grow: 0;*/
-}
 .articles__text {
 	margin-bottom: 40px;
-	/*flex-grow: 0;*/
 	flex-basis: 595px;
 }
 .articles__text--h3 {
 	font-size: 2.45em;
-	/*margin: 15px 0;*/
 }
 .articles__text--p {
 	font-size: 1.5em;
@@ -105,11 +115,16 @@ body {
 	bottom: -4px;
 }
 .team {
-	padding: 105px 0;
+	padding-top: 105px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 136px;
 	background-color: #02ccd6;
 }
 .team .container {
 	flex-direction: column;
+	max-width: 1200px;
+	padding: 80px 40px;
 }
 .team-row {
 	width: 100%;
@@ -121,6 +136,9 @@ body {
 	position: relative;
 	margin: 15px 0;
 }
+.team__avatar--img {
+	width: 100%;
+}
 .team__avatar::before {
 	content: "";
 	position: absolute;
@@ -130,13 +148,8 @@ body {
 	left: -65%;
 	background: url(../img/bg_team.svg) no-repeat;
 }
-.team-row:nth-child(odd) .team__info {
-	margin: 0 60px;
-}
-.team-row:nth-child(even) .team__info {
-	margin: 0 60px;
-}
 .team__info {
+	margin: 0 60px;
 	color: #fff;
 	flex-grow: 1;
 }
@@ -151,12 +164,34 @@ body {
 	margin: 20px 0 0;
 }
 .footer {
-	background: #000 url(../img/bg_footer.svg) center;
-	background-size: cover;
+	position: relative;
+	background: #000;
 	color: #fff;
+}
+.footer__bg {
+	position: absolute;
+	background: url(../img/bg_footer.png) right top no-repeat;
+	top: -15%;
+	width: 100%;
+	height: 115%;
 }
 .footer .container {
 	flex-direction: column;
+	max-width: 100%;
+}
+.footer__contact {
+	width: 100%;
+	max-width: 1200px;
+    padding: 0 40px;
+	margin-bottom: 150px;
+}
+.footer__contact--h3 {
+	font-size: 2.45em;
+}
+.footer__contact--p {
+	font-size: 1.5em;
+	font-weight: 300;
+	margin: 0;
 }
 .footer-row {
 	width: 100%;
@@ -168,21 +203,7 @@ body {
 .footer-logo__image {
 	width: 60px;
 }
-.footer__contact {
-	width: 100%;
-	max-width: 850px;
-	margin-bottom: 150px;
-}
-.footer__contact--h3 {
-	font-size: 2.45em;
-}
-.footer__contact--p {
-	font-size: 1.5em;
-	font-weight: 300;
-	margin: 0;
-}
 .copyright {
-	margin-right: 0 30px;
 	text-align: center;
 	font-size: 1.125em;
 	font-weight: 300;
@@ -194,10 +215,10 @@ body {
 .social__image {
 	margin-left: 15px;
 }
-@media screen and (max-width: 991px) {
-	body {
-	font-size: 80%;
+.social a:nth-child(1) .social__image {
+	margin-left: 0px;
 }
+@media screen and (max-width: 991px) {
 	.articles-row {
 		justify-content: center;
 	}
@@ -237,5 +258,50 @@ body {
 @media screen and (min-width: 992px) {
 	.team-row:nth-child(even) .team__info {
 		text-align: right;
+	}
+}
+@media screen and (max-width: 575.98px) {
+	body {
+		font-size: 80%;
+	}
+	.navbar {
+		display: none;
+	}
+	.header-button {
+		display: block;
+	}
+	.separator__svg {
+		height: 50px;
+	}
+	.team {
+		padding: 0;
+	}
+	.footer {
+		height: 100vh;
+	}
+	.footer .container {
+		align-content: space-around;
+		padding-bottom: 0px;
+		height: 100%;
+	}
+	.footer__bg {
+		top: -10%;
+		height: 110%;
+	}
+	.footer__contact {
+		padding: 0;
+	}
+	.footer-row {
+		flex-grow: 1;	
+	}
+	.footer-logo {
+		flex-grow: 1;
+		display: flex;
+		align-items: center;
+	}
+	.copyright {
+		display: flex;
+		align-items: flex-end;
+		flex-grow: 0;
 	}
 }
