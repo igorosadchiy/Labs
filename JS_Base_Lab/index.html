@@ -7,10 +7,24 @@
 
 <body>
 	<script>
-		var num_1 = +prompt ('Введите первое значение', '');
-		var num_2 = +prompt ('Введите второе значение', '');
-		var arithmetic = prompt ('Введите математический оператор', '');
-		alert ('Результат: '+num_1+arithmetic+num_2+'='+eval(num_1+arithmetic+num_2));
+		//var num_1 = +prompt ('Введите первое значение', '');
+		//var num_2 = +prompt ('Введите второе значение', '');
+		//var arithmetic = prompt ('Введите математический оператор', '');
+		//alert ('Результат: '+num_1+arithmetic+num_2+'='+eval(num_1+arithmetic+num_2));
+		
+		var array = [];
+		for (var i=1; i<=5; i++) {
+			var carObj = {
+			FirmName:'',
+			ModelName:'',
+			EngineName:'',			
+		};
+			for (var key in carObj) {
+				carObj[key] = prompt(key, '');
+			}
+			array.push (carObj);
+		}
+		
 	</script>
 </body>
 </html>
