@@ -12,8 +12,8 @@
 		var arithmetic = prompt ('Введите математический оператор', '');
 		alert ('Результат: '+num_1+arithmetic+num_2+'='+eval(num_1+arithmetic+num_2));*/
 		
-		var array = [];
-		for (var i=1; i<=5; i++) {
+		/*var array = [];
+		for (var i=1; i<=2; i++) {
 			var carObj = {
 			FirmName:'',
 			ModelName:'',
@@ -25,9 +25,9 @@
 			}
 			array.push (carObj);
 		}
-		for (var i=1; i<=5; i++) {
+		for (i in array) {
 			if (array[i].EngineName > 2.0) alert (array[i].FirmName + ' ' + array[i].EngineName);
-		}
+		}*/
 		
 		/*function balls(i) {
   			if (i<=100 && i>=95) {return alert( 'A' );};
@@ -38,6 +38,9 @@
   			if (i<=59  && i>=0 ) {return alert( 'FX');};
 		};
 		balls(+prompt("Введите баллы"));*/
+		for (var i in window) {
+			document.write('<p>'+window[i]+'<p>');
+		};
 		
 	</script>
 </body>
