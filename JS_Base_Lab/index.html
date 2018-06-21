@@ -7,10 +7,10 @@
 
 <body>
 	<script>
-		//var num_1 = +prompt ('Введите первое значение', '');
-		//var num_2 = +prompt ('Введите второе значение', '');
-		//var arithmetic = prompt ('Введите математический оператор', '');
-		//alert ('Результат: '+num_1+arithmetic+num_2+'='+eval(num_1+arithmetic+num_2));
+		/*var num_1 = +prompt ('Введите первое значение', '');
+		var num_2 = +prompt ('Введите второе значение', '');
+		var arithmetic = prompt ('Введите математический оператор', '');
+		alert ('Результат: '+num_1+arithmetic+num_2+'='+eval(num_1+arithmetic+num_2));*/
 		
 		var array = [];
 		for (var i=1; i<=5; i++) {
@@ -21,9 +21,23 @@
 		};
 			for (var key in carObj) {
 				carObj[key] = prompt(key, '');
+				if (key == 'EngineName') carObj[key] = parseFloat(carObj[key]);
 			}
 			array.push (carObj);
 		}
+		for (var i=1; i<=5; i++) {
+			if (array[i].EngineName > 2.0) alert (array[i].FirmName + ' ' + array[i].EngineName);
+		}
+		
+		/*function balls(i) {
+  			if (i<=100 && i>=95) {return alert( 'A' );};
+  			if (i<=94  && i>=85) {return alert( 'B' );};
+  			if (i<=84  && i>=75) {return alert( 'C' );};
+  			if (i<=74  && i>=65) {return alert( 'D' );};
+  			if (i<=64  && i>=60) {return alert( 'E' );};
+  			if (i<=59  && i>=0 ) {return alert( 'FX');};
+		};
+		balls(+prompt("Введите баллы"));*/
 		
 	</script>
 </body>
