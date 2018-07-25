@@ -1,0 +1,55 @@
+.error {
+    border-color: red;
+    animation: animateBorder 1s linear infinite;
+} 
+
+.form-group {
+    position: relative;
+}
+
+.error-message {
+    position: absolute;
+    display: none;
+    color: red;
+    font-size: 12px;
+    bottom: -12px;
+}
+
+@keyframes animateBorder {
+    from {
+        border-color: red; 
+    }
+
+    to {
+        border-color: blue;
+    }
+}
+
+.visible {
+    display: block !important;
+}
+
+#search-result {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.card {
+	width: 18rem;
+	margin: 5px;
+}
+
+.card-img-top {
+	height: 26rem;
+}
+
+.card-title {
+	height: 48px;
+}
+
+.btn-card {
+	margin-top: 10px;
+}
