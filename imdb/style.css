@@ -1,55 +1,87 @@
 .error {
-    border-color: red;
-    animation: animateBorder 1s linear infinite;
-} 
-
-.form-group {
-    position: relative;
+	background-color: coral !important;
 }
 
-.error-message {
-    position: absolute;
-    display: none;
-    color: red;
-    font-size: 12px;
-    bottom: -12px;
+.error::-webkit-input-placeholder {
+    color: white !important;
 }
 
-@keyframes animateBorder {
-    from {
-        border-color: red; 
-    }
+.error::-moz-placeholder {
+    color: white !important;
+}
 
-    to {
-        border-color: blue;
-    }
+.alert-message {
+	position: absolute;
+	display: none;
+	background-color: #FFFFFF;
+	font-weight: bold;
+	width: 100%;
+	bottom: -24px;
+	right: 16px;
+	text-align: right;
+	font-size: 1em;
 }
 
 .visible {
     display: block !important;
 }
 
-#search-result {
+#card-container {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
 	align-items: flex-start;
 	flex-wrap: wrap;
 }
 
 .card {
-	width: 18rem;
 	margin: 5px;
+	width: 14rem;
 }
 
+.poster-wrap { position: relative; }
+
+.poster-wrap::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.5);
+	opacity: 0;
+	transition: opacity .3s;
+	transition-timing-function: ease;
+	transition-delay: 0s;
+}
+
+.poster-wrap:hover::before { opacity: 1; }
+
 .card-img-top {
-	height: 26rem;
+	height: 20rem;
 }
 
 .card-title {
 	height: 48px;
 }
 
-.btn-card {
-	margin-top: 10px;
+.modal-body {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	flex-wrap: nowrap;
+}
+
+.modal-about {
+	/*width: 200px;*/
+	margin-left: 15px;
+}
+
+@media screen and (max-width: 991.98px) {
+	.modal-body {
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.modal-about {
+		margin: 20px;
+	}
 }
