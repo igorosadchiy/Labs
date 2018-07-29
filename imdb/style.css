@@ -30,6 +30,7 @@
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
+	justify-content: center;
 	flex-wrap: wrap;
 }
 
@@ -40,7 +41,7 @@
 
 .poster-wrap { position: relative; }
 
-.poster-wrap::before {
+.poster-wrap::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -54,7 +55,7 @@
 	transition-delay: 0s;
 }
 
-.poster-wrap:hover::before { opacity: 1; }
+.poster-wrap:hover::after { opacity: 1; }
 
 .card-img-top {
 	height: 20rem;
@@ -82,6 +83,6 @@
 		flex-wrap: wrap;
 	}
 	.modal-about {
-		margin: 20px;
+		margin-top: 20px;
 	}
 }
