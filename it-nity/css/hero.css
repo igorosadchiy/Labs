@@ -2,7 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -140px;
-  height: 853px;
+  margin-top: -143px;
+  height: 100vh;
+  min-height: 430px;
   background: #02ccd6 url(../img/bg_hero.svg) no-repeat;
+  background-position: bottom right;
+  background-size: cover;
 }
