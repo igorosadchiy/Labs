@@ -12,31 +12,34 @@
 
 <body>
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-	<a class="navbar-brand" href="./index.html"><img class="navbar-brand-logo d-inline-block mr-3" src="IMDb.png" width="40" height="40" alt="IMDB APP"><strong>IMDB APP</strong></a>
+	<a href="./index.html" class="navbar-brand"><img class="navbar-brand-logo d-inline-block mr-3" src="IMDb.png" width="40" height="40" alt="IMDB APP"><strong>IMDB APP</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a class="nav-link" href="./index.html"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="http://www.omdbapi.com/"><i class="fa fa-question-circle"></i> API Documentation</a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-star"></em> Favorites</a></li>
+            <li class="nav-item mr-2 active"><a class="nav-link" href="http://www.omdbapi.com/"><em class="fa fa-home"></em> Home <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#" id="nav-link-favorites"><em class="fa fa-star"></em> Favorites</a></li>
         </ul>
 		<form name="search_form" class="form-inline my-2 my-lg-0">
-			<div class="form-check mr-3">
-				<input class="form-check-input" type="radio" name="typeCheck" id="movie-check" checked value="movie">
-				<label class="form-check-label text-white" for="movie-check">Movie</label>
+			<div class="radio-wrap d-flex mb-1">
+				<div class="form-check mr-3">
+					<input class="form-check-input" type="radio" name="typeCheck" id="movie-check" checked value="movie">
+					<label class="form-check-label text-white" for="movie-check">Movie</label>
+				</div>
+				<div class="form-check mr-3">
+					<input class="form-check-input" type="radio" name="typeCheck" id="series-check" value="series">
+					<label class="form-check-label text-white" for="series-check">Series</label>
+				</div>
+				<div class="form-check mr-3">
+					<input class="form-check-input" type="radio" name="typeCheck" id="episode-check" value="episode">
+					<label class="form-check-label text-white" for="episode-check">Episode</label>
+				</div>
 			</div>
-			<div class="form-check mr-3">
-				<input class="form-check-input" type="radio" name="typeCheck" id="series-check" value="series">
-				<label class="form-check-label text-white" for="series-check">Series</label>
-			</div>
-			<div class="form-check mr-3">
-				<input class="form-check-input" type="radio" name="typeCheck" id="episode-check" value="episode">
-				<label class="form-check-label text-white" for="episode-check">Episode</label>
-			</div>
-            <input class="form-control mr-sm-2" type="search" placeholder="Enter title" aria-label="Search" id="title">
-            <button class="btn btn-warning my-2 my-sm-0" type="submit">Search <em class="fa fa-film"></em></button>
+            <div class="search-wrap d-flex">
+                <input class="form-control mr-2" type="search" placeholder="Enter title" aria-label="Search" id="title">
+                <button class="btn btn-warning my-0" type="submit">Search <em class="fa fa-film"></em></button>
+            </div>
 			<span class="alert-message"></span>
         </form>
     </div>
