@@ -3,6 +3,8 @@ const API_KEY = 'fd58e48d';
 const url = `https://www.omdbapi.com/?apikey=${API_KEY}`;
 const form = document.forms.search_form;
 const alertMessage = form.querySelector('.alert-message');
+const navLinkHome = document.getElementsByClassName('nav-item')[0];
+const navLinkFavorites = document.getElementsByClassName('nav-item')[1];
 
 form.addEventListener('submit', (event) => {
 	"use strict";
@@ -15,6 +17,8 @@ form.addEventListener('submit', (event) => {
 		alertMessage.innerHTML = 'This field is required!';
         setVisibility(alertMessage, true);
     } else {
+		navLinkHome.classList.add('active');
+		navLinkFavorites.classList.remove('active');
         fetch(`${url}&s=${searchValue}&type=${typeValue}`)
             .then( response => response.json() )
             .then( data => generateResultCards(data) );
@@ -50,8 +54,8 @@ function generateResultCards(data) {
 		return;
 	}
 	const searchArray = data.Search;
-	let cardArray = [];
 	const localstorage = JSON.stringify(localStorage);
+	let cardArray = [];
 	let favorite = '';
 	alertMessage.classList.remove('text-danger');
 	alertMessage.classList.add('text-success');
@@ -73,9 +77,10 @@ addFavoritesListeners();
 
 function addFavoritesListeners() {
 	"use strict";
-	const navLinkFavorites = document.getElementById('nav-link-favorites');
 	navLinkFavorites.addEventListener('click', () => {
 		event.preventDefault();
+		navLinkHome.classList.remove('active');
+		navLinkFavorites.classList.add('active');
 		generateFavoritesCards();
 	});
 }

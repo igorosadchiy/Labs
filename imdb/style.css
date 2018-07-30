@@ -1,3 +1,7 @@
+.navbar {
+	box-shadow: 0px 3px 8px 0px #007bff;
+}
+
 .error {
 	background-color: coral !important;
 }
@@ -13,10 +17,9 @@
 .alert-message {
 	position: absolute;
 	display: none;
-	background-color: #FFFFFF;
 	font-weight: bold;
 	width: 100%;
-	bottom: -24px;
+	bottom: -35px;
 	right: 16px;
 	text-align: right;
 	font-size: 1em;
@@ -24,6 +27,10 @@
 
 .visible {
     display: block !important;
+}
+
+.main {
+	
 }
 
 #card-container {
@@ -73,10 +80,8 @@
 }
 
 .modal-about {
-	/*width: 200px;*/
 	margin-left: 15px;
 }
-
 
 @media screen and (max-width: 991.98px) {
 	.navbar-nav {
