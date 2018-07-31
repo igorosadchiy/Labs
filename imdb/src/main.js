@@ -5,6 +5,7 @@ const form = document.forms.search_form;
 const alertMessage = form.querySelector('.alert-message');
 const navLinkHome = document.getElementsByClassName('nav-item')[0];
 const navLinkFavorites = document.getElementsByClassName('nav-item')[1];
+const background = document.querySelector('.background-wrap');
 
 form.addEventListener('submit', (event) => {
 	"use strict";
@@ -19,6 +20,7 @@ form.addEventListener('submit', (event) => {
     } else {
 		navLinkHome.classList.add('active');
 		navLinkFavorites.classList.remove('active');
+		background.classList.remove('invisible');
         fetch(`${url}&s=${searchValue}&type=${typeValue}`)
             .then( response => response.json() )
             .then( data => generateResultCards(data) );
@@ -69,6 +71,7 @@ function generateResultCards(data) {
 		}
 		cardArray.push (renderCard (searchArray[i].imdbID, searchArray[i].Poster, searchArray[i].Title, searchArray[i].Year, favorite));
 	}
+	background.classList.add('invisible');
 	document.getElementById("card-container").innerHTML = cardArray.join('');
 	addCardListeners();
 }
@@ -95,6 +98,7 @@ function generateFavoritesCards() {
 			.then( response => response.json() )
 			.then( data => {
 				cardArray.push(renderCard (data.imdbID, data.Poster, data.Title, data.Year, "active"));
+				background.classList.add('invisible');
 				document.getElementById("card-container").innerHTML = cardArray.join('');
 				addCardListeners();
 			});
@@ -108,9 +112,9 @@ function generateFavoritesCards() {
 
 function renderCard (imdbID, Poster, Title, Year, favorite) {
 	"use strict";
-	if (Poster === "N/A") {Poster = "no-image.png";}
+	if (Poster === "N/A") {Poster = "img/no-image.png";}
 	return (`
-		<div class="card">
+		<div class="card m-2">
 			<a href="#" class="poster-wrap" data-id="${imdbID}" title="Click to more info" >
 				<img src="${Poster}" alt="" class="card-img-top">
 			</a>
@@ -118,7 +122,6 @@ function renderCard (imdbID, Poster, Title, Year, favorite) {
 				<h5 class="card-title">${Title}</h5>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item"><b>Year:</b> ${Year}</li>
-					<li class="list-group-item"><b>ID:</b> ${imdbID}</li>
 				</ul>
 				<button type="button" class="btn-more-info btn btn-primary mt-3" data-id="${imdbID}">More info</button>
 				<button type="button" class="btn-favorite btn btn-outline-warning mt-3 float-right ${favorite}" id="${imdbID}" data-id="${imdbID}"><i class="fa fa-star-o"></i></button>
@@ -176,9 +179,9 @@ function generateModalMoreInfo(data) {
 		}
 		if (data[arrayKeys[i]] !== "N/A" && data[arrayKeys[i]] !== undefined) {
 			if (arrayKeys[i] === "Website") {
-				modalDescription += `<span class="modal-description small"><strong>${arrayKeys[i]}:</strong> <a href="${data[arrayKeys[i]]}" target="_blank">${data[arrayKeys[i]]}</a></span><br>`;
+				modalDescription += `<li class="modal-description ml-4 mb-1 small text-truncate"><strong>${arrayKeys[i]}:</strong> <a href="${data[arrayKeys[i]]}" target="_blank">${data[arrayKeys[i]]}</a></li>`;
 			} else {
-				modalDescription += `<span class="modal-description small"><strong>${arrayKeys[i]}:</strong> ${data[arrayKeys[i]]}</span><br>`;
+				modalDescription += `<li class="modal-description ml-4 mb-1 small"><strong>${arrayKeys[i]}:</strong> ${data[arrayKeys[i]]}</li>`;
 			}
 		}
 	}
@@ -186,14 +189,16 @@ function generateModalMoreInfo(data) {
 	  <div class="modal-header">
         <h5 class="modal-title" id="ModalTitle">${data.Title}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">×</span>
         </button>
       </div>
-      <div class="modal-body">
-		  <img src="${data.Poster}" alt="" class="modal-poster">
-		  <div class="modal-about">
+      <div class="modal-body d-flex flex-row align-items-start flex-sm-nowrap flex-wrap">
+		  <img src="${data.Poster}" alt="" class="modal-poster w-100">
+		  <div class="modal-about w-100">
 			  ${plot}
-			  ${modalDescription} 
+			<ul class="modal-description-group list-unstyled mt-2">
+			  ${modalDescription}
+			</ul>
 		  </div>
       </div>
       <div class="modal-footer">
