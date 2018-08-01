@@ -15,13 +15,13 @@
 	font-size: 1em;
 }
 
-.header {position: relative;}
+.background-wrap {position: relative;}
 
 .background-wrap::before {
 	content: '';
 	position: absolute;
-	height: calc(100vh - 70px);
-	top: 70px;
+	height: calc(100vh - 66px);
+	top: -48px;
 	left: 0;
 	right: 0;
 	bottom:0;
@@ -43,9 +43,9 @@
 .background-wrap::after {
 	content: '';
 	position: absolute;
-	height: calc(100vh - 74px);
+	height: calc(100vh - 70px);
 	width: 90%;
-	top: 74px;
+	top: -44px;
 	left: 0;
 	right: 0;
 	bottom:0;
