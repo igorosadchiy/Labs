@@ -2,11 +2,13 @@
 .error {background-color: coral !important;}
 .error::-webkit-input-placeholder {color: white !important;}
 .error::-moz-placeholder {color: white !important;}
-.visible {display: block !important;}
+
+.display-none {
+    display: none;
+}
 
 .alert-message {
 	position: absolute;
-	display: none;
 	font-weight: bold;
 	width: 100%;
 	bottom: -35px;
@@ -35,9 +37,13 @@
 	animation: show-bg 2s linear;
 }
 
-@keyframes show-bg {
+/*@keyframes show-bg {
 	from {opacity: 0;}
 	to {opacity: .2;}
+}*/
+
+.background-wrap:enabled {
+    animation: show-bg 2s linear;
 }
 
 .background-wrap::after {
@@ -79,7 +85,7 @@
 }
 
 .card-img-top {height: 20rem;}
-.card-title {height: 48px;}
+.card-title {flex-grow: 1;}
 .poster-wrap {position: relative;}
 .poster-wrap:hover::after {opacity: 1;}
 .poster-wrap::after {

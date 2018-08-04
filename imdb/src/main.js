@@ -6,21 +6,49 @@ const alertMessage = form.querySelector('.alert-message');
 const navLinkHome = document.getElementsByClassName('nav-item')[0];
 const navLinkFavorites = document.getElementsByClassName('nav-item')[1];
 const background = document.querySelector('.background-wrap');
+const paginationContainers = document.querySelectorAll('.paginationContainer');
+const cardContainer = document.getElementById("card-container");
+var searchValue = form.title.value.trim();
+var typeValue = form.typeCheck.value;
 const quant = 10;
 var page = 1;
 
+const homeLinks = [navLinkHome, document.querySelector('.navbar-brand')];
+homeLinks.forEach(link => {
+    "use strict";
+    link.addEventListener('click', () => {
+        navLinkHome.classList.add('active');
+        navLinkFavorites.classList.remove('active');
+        cardContainer.innerHTML = '';
+        paginationContainers.forEach (container => {container.innerHTML = '';});
+        form.title.value = '';
+        alertMessage.classList.add('invisible');
+        background.classList.remove('display-none');
+    });
+});
 
-form.addEventListener('submit', (event) => {
+navLinkFavorites.addEventListener('click', () => {
+    "use strict";
+    navLinkHome.classList.remove('active');
+    navLinkFavorites.classList.add('active');
+    background.classList.add('display-none');
+    cardContainer.innerHTML = '';
+    paginationContainers.forEach(container => {container.innerHTML = '';});
+    form.title.value = '';
+    generateFavoritesCards();
+});
+
+form.addEventListener('submit', event => {
     "use strict";
     event.preventDefault();
     page = 1;
-    const searchValue = form.title.value.trim();
-    const typeValue = form.typeCheck.value;
+    searchValue = form.title.value.trim();
+    typeValue = form.typeCheck.value;
     if (!searchValue) {
         form.title.classList.add('error');
         alertMessage.classList.add('text-danger');
         alertMessage.innerHTML = 'This field is required!';
-        setVisibility(alertMessage, true);
+        alertMessage.classList.remove('invisible');
     } else {
         navLinkHome.classList.add('active');
         navLinkFavorites.classList.remove('active');
@@ -30,24 +58,14 @@ form.addEventListener('submit', (event) => {
     }
 });
 
-form.title.addEventListener('focus', (event) => {
+form.title.addEventListener('focus', () => {
     "use strict";
-    event.preventDefault();
     if (alertMessage.classList.value.indexOf("text-danger") > 0) {
         form.title.classList.remove('error');
         alertMessage.classList.remove('text-danger');
-        setVisibility(alertMessage, false);
+        alertMessage.classList.add('invisible');
     }
 });
-
-function setVisibility(element, isError) {
-    "use strict";
-    if (isError) {
-        element.classList.add('visible');
-    } else {
-        element.classList.remove('visible');
-    }
-}
 
 function generateResultCards(data) {
     "use strict";
@@ -56,8 +74,9 @@ function generateResultCards(data) {
         alertMessage.classList.remove('text-success');
         alertMessage.classList.add('text-danger');
         alertMessage.innerHTML = 'Not Found!';
-        setVisibility(alertMessage, true);
-        document.getElementById("card-container").innerHTML = '';
+        alertMessage.classList.remove('invisible');
+        paginationContainers.forEach (container => {container.innerHTML = '';});
+        cardContainer.innerHTML = '';
         return;
     }
     const searchArray = data.Search;
@@ -68,7 +87,7 @@ function generateResultCards(data) {
     alertMessage.classList.remove('text-danger');
     alertMessage.classList.add('text-success');
     alertMessage.innerHTML = `Found ${totalResults} movies`;
-    setVisibility(alertMessage, true);
+    alertMessage.classList.remove('invisible');
     for (var i = 0; i < searchArray.length; i++) {
         if (localstorage.indexOf(searchArray[i].imdbID) > 0) {
             favorite = 'active';
@@ -77,22 +96,10 @@ function generateResultCards(data) {
         }
         cardArray.push(renderCard(searchArray[i].imdbID, searchArray[i].Poster, searchArray[i].Title, searchArray[i].Year, favorite));
     }
-    document.getElementById("card-container").innerHTML = cardArray.join('');
-    renderPagination(totalResults);
+    cardContainer.innerHTML = cardArray.join('');
     addCardListeners();
-}
-
-addFavoritesListeners();
-
-function addFavoritesListeners() {
-    "use strict";
-    navLinkFavorites.addEventListener('click', () => {
-        event.preventDefault();
-        navLinkHome.classList.remove('active');
-        navLinkFavorites.classList.add('active');
-        background.classList.add('invisible');
-        generateFavoritesCards();
-    });
+    paginationContainers.forEach (container => {container.innerHTML = '';});
+    if (totalResults > 10) {renderPagination(totalResults);}
 }
 
 function generateFavoritesCards() {
@@ -104,13 +111,12 @@ function generateFavoritesCards() {
             sendRequest(key);
         }
     }
-
     function sendRequest(id) {
         fetch(`${url}&i=${id}&plot=full`)
             .then(response => response.json())
             .then(data => {
                 cardArray.push(renderCard(data.imdbID, data.Poster, data.Title, data.Year, "active"));
-                document.getElementById("card-container").innerHTML = cardArray.join('');
+                cardContainer.innerHTML = cardArray.join('');
                 addCardListeners();
             });
         i++;
@@ -118,7 +124,7 @@ function generateFavoritesCards() {
     alertMessage.classList.remove('text-danger');
     alertMessage.classList.add('text-success');
     alertMessage.innerHTML = `Found ${i} favorite movies`;
-    setVisibility(alertMessage, true);
+    alertMessage.classList.remove('invisible');
 }
 
 function renderCard(imdbID, Poster, Title, Year, favorite) {
@@ -128,16 +134,18 @@ function renderCard(imdbID, Poster, Title, Year, favorite) {
     }
     return (`
         <div class="card m-2">
-            <a href="#" class="poster-wrap" data-id="${imdbID}" title="Click to more info" >
-                <img src="${Poster}" alt="" class="card-img-top">
+            <a href="#" class="poster-wrap" data-id="${imdbID}" title="Click to more info">
+                <img src="${Poster}" alt="" class="card-img-top" onerror="this.src = 'img/no-image.png'">
             </a>
-            <div class="card-body">
+            <div class="card-body d-flex flex-column justify-content-between">
                 <h5 class="card-title">${Title}</h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><b>Year:</b> ${Year}</li>
                 </ul>
-                <button type="button" class="btn-more-info btn btn-primary mt-3" data-id="${imdbID}">More info</button>
-                <button type="button" class="btn-favorite btn btn-outline-warning mt-3 float-right ${favorite}" id="${imdbID}" data-id="${imdbID}"><i class="fa fa-star-o"></i></button>
+                <div class="card-foot">
+                    <button type="button" class="btn-more-info btn btn-primary mt-3" data-id="${imdbID}">More info</button>
+                    <button type="button" class="btn-favorite btn btn-outline-warning mt-3 float-right ${favorite}" id="${imdbID}" data-id="${imdbID}"><i class="fa fa-star-o"></i></button>
+                </div>
             </div>
         </div>`);
 }
@@ -209,7 +217,7 @@ function generateModalMoreInfo(data) {
         </button>
     </div>
     <div class="modal-body d-flex flex-row align-items-start flex-sm-nowrap flex-wrap justify-content-center">
-        <img src="${data.Poster}" alt="" class="modal-poster w-100">
+        <img src="${data.Poster}" alt="" class="modal-poster w-100" onerror="this.classList.remove('w-100')">
         <div class="modal-about w-100">
             ${plot}
             <ul class="modal-description-group list-unstyled mt-2">
@@ -222,9 +230,6 @@ function generateModalMoreInfo(data) {
         <button type="button" class="btn-modal-favorite btn btn-outline-warning ${favorite}" data-id="${data.imdbID}"><i class="fa fa-star-o"></i> Favorites</button>
     </div>`;
     document.getElementsByClassName('modal-content')[0].innerHTML = modalContent;
-    if (data.Poster === "N/A") {
-            document.querySelector('.modal-poster').classList.remove('w-100');
-    }
     addModalListeners();
     $('#modalMoreInfo').modal('show');
 }
@@ -233,29 +238,30 @@ function addModalListeners() {
     "use strict";
     const btnModalFavorite = document.querySelector('.btn-modal-favorite');
     const id = btnModalFavorite.dataset.id;
+    const btnCardFavorite = document.getElementById(id);
     btnModalFavorite.addEventListener('click', () => {
         if (JSON.stringify(localStorage).indexOf(id) > 0) {
             localStorage.removeItem(id);
             btnModalFavorite.classList.remove('active');
-            document.getElementById(id).classList.remove('active');
+            btnCardFavorite.classList.remove('active');
         } else {
             localStorage.setItem(id, 'id');
             btnModalFavorite.classList.add('active');
-            document.getElementById(id).classList.add('active');
+            btnCardFavorite.classList.add('active');
         }
     });
 }
 
 function renderPagination(total) {
     "use strict";
-    let max = Math.ceil(total / quant);
     const pageButtonsArray = [];
+    let max = Math.ceil(total / quant);
     let previous = `<li class="page-item"><a class="page-link" href="${page-1}">Previous</a></li>`;
     let next = `<li class="page-item"><a class="page-link" href="${page+1}">Next</a></li>`;
     
     if (page === 1) {
         previous = `<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`;
-    } else if (page === total) {
+    } else if (page === max) {
         next = `<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>`;
     }
     
@@ -265,31 +271,35 @@ function renderPagination(total) {
             pageButtonsArray.push(`<li class="page-item active"><a class="page-link href="#" style="pointer-events: none;">${paginationArray[i]}</a></li>`);
         } else {
             pageButtonsArray.push(`<li class="page-item"><a class="page-link" href="${paginationArray[i]}">${paginationArray[i]}</a></li>`);
-            if (paginationArray[i+1] - paginationArray[i] !== 1) {
+            if (paginationArray[i+1] - paginationArray[i] > 1) {
                 pageButtonsArray.push(`<li class="page-item disabled"><a class="page-link href="#" style="pointer-events: none;">...</a></li>`);
             }
         }
     }
     const resultString = `
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
+    <nav aria-label="Search results pages">
+        <ul class="pagination pagination-sm">
             ${previous}
             ${pageButtonsArray.join('')}
             ${next}
         </ul>
     </nav>`;
-    document.getElementById('paginationContainer').innerHTML = resultString;
-    document.getElementById('paginationContainer').querySelectorAll('li a').forEach((item) => {
-        if (paginationArray[i] !== +page) {
-            item.addEventListener('click', (event) => {
+    paginationContainers.forEach((container) =>{
+    container.innerHTML = resultString;
+    container.querySelectorAll('li a').forEach((item) => {
+        if (paginationArray[i] !== page) {
+            item.addEventListener('click', event => {
                 event.preventDefault();
                 page = +item.getAttribute('href');
-                getSearch();
+                switchPage();
             });
         }
     });
+    });
 }
 
+//paginationArray(current,step,max) step = 0 полный диапазон
+//alert(paginationArray(13, 2, 14));
 function paginationMath(current, step, max) {
     "use strict";
     return Array(max + 1).join("1").split("").map(
@@ -300,13 +310,9 @@ function paginationMath(current, step, max) {
                 return step ? 1 === a || a === current || a === max || a <= current + step && a >= current - step : !0;
             });
 }
-   //paginationArray(current,step,max ) step = 0 полный диапазон
-//alert(paginationArray(13, 2, 14));
 
-function getSearch() {
+function switchPage() {
     "use strict";
-    const searchValue = form.title.value.trim();
-    const typeValue = form.typeCheck.value;
     fetch(`${url}&s=${searchValue}&type=${typeValue}&page=${page}`)
         .then(response => response.json())
         .then(data => generateResultCards(data));
