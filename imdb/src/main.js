@@ -22,7 +22,6 @@ homeLinks.forEach(link => {
         cardContainer.innerHTML = '';
         paginationContainers.forEach (container => {container.innerHTML = '';});
         form.title.value = '';
-        alertMessage.classList.add('invisible');
         background.classList.remove('display-none');
     });
 });
@@ -38,6 +37,16 @@ navLinkFavorites.addEventListener('click', () => {
     generateFavoritesCards();
 });
 
+function showAlertMessage(message, color) {
+    "use strict";
+    alertMessage.classList.add(color);
+    alertMessage.innerHTML = message;
+    alertMessage.style.opacity = "1";
+    alertMessage.classList.remove('display-none');
+    setTimeout(function(){ alertMessage.style.opacity = "0"; }, 3000);
+    setTimeout(function(){ alertMessage.classList.add('display-none'); alertMessage.classList.remove(color); }, 4000);
+}
+
 form.addEventListener('submit', event => {
     "use strict";
     event.preventDefault();
@@ -46,48 +55,41 @@ form.addEventListener('submit', event => {
     typeValue = form.typeCheck.value;
     if (!searchValue) {
         form.title.classList.add('error');
-        alertMessage.classList.add('text-danger');
-        alertMessage.innerHTML = 'This field is required!';
-        alertMessage.classList.remove('invisible');
+        showAlertMessage('This field is required!', 'alert-danger');
     } else {
         navLinkHome.classList.add('active');
         navLinkFavorites.classList.remove('active');
         fetch(`${url}&s=${searchValue}&type=${typeValue}&page=${page}`)
             .then(response => response.json())
-            .then(data => generateResultCards(data));
+            .then(data => checkData(data));
     }
 });
 
 form.title.addEventListener('focus', () => {
     "use strict";
-    if (alertMessage.classList.value.indexOf("text-danger") > 0) {
-        form.title.classList.remove('error');
-        alertMessage.classList.remove('text-danger');
-        alertMessage.classList.add('invisible');
-    }
+    form.title.classList.remove('error');
 });
+
+function checkData(data) {
+    "use strict";
+    if (data.Response === "False") {
+        showAlertMessage('Not Found!', 'alert-danger');
+        paginationContainers.forEach (container => {container.innerHTML = '';});
+        cardContainer.innerHTML = '';
+    } else {
+        generateResultCards(data);
+        showAlertMessage(`Found ${data.totalResults} movies`, 'alert-success');
+    }
+}
 
 function generateResultCards(data) {
     "use strict";
-    background.classList.add('invisible');
-    if (data.Response === "False") {
-        alertMessage.classList.remove('text-success');
-        alertMessage.classList.add('text-danger');
-        alertMessage.innerHTML = 'Not Found!';
-        alertMessage.classList.remove('invisible');
-        paginationContainers.forEach (container => {container.innerHTML = '';});
-        cardContainer.innerHTML = '';
-        return;
-    }
+    background.classList.add('display-none');
     const searchArray = data.Search;
     const localstorage = JSON.stringify(localStorage);
     const totalResults = data.totalResults;
     let cardArray = [];
     let favorite = '';
-    alertMessage.classList.remove('text-danger');
-    alertMessage.classList.add('text-success');
-    alertMessage.innerHTML = `Found ${totalResults} movies`;
-    alertMessage.classList.remove('invisible');
     for (var i = 0; i < searchArray.length; i++) {
         if (localstorage.indexOf(searchArray[i].imdbID) > 0) {
             favorite = 'active';
@@ -121,10 +123,7 @@ function generateFavoritesCards() {
             });
         i++;
     }
-    alertMessage.classList.remove('text-danger');
-    alertMessage.classList.add('text-success');
-    alertMessage.innerHTML = `Found ${i} favorite movies`;
-    alertMessage.classList.remove('invisible');
+    showAlertMessage(`Found ${i} favorite movies`, 'alert-success');
 }
 
 function renderCard(imdbID, Poster, Title, Year, favorite) {
@@ -256,13 +255,13 @@ function renderPagination(total) {
     "use strict";
     const pageButtonsArray = [];
     let max = Math.ceil(total / quant);
-    let previous = `<li class="page-item"><a class="page-link" href="${page-1}">Previous</a></li>`;
-    let next = `<li class="page-item"><a class="page-link" href="${page+1}">Next</a></li>`;
+    let previous = `<li class="page-item"><a class="page-link" href="${page-1}">«</a></li>`;
+    let next = `<li class="page-item"><a class="page-link" href="${page+1}">»</a></li>`;
     
     if (page === 1) {
-        previous = `<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>`;
+        previous = `<li class="page-item disabled"><a class="page-link" href="#">«</a></li>`;
     } else if (page === max) {
-        next = `<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>`;
+        next = `<li class="page-item disabled"><a class="page-link" href="#">»</a></li>`;
     }
     
     const paginationArray = paginationMath(page, 2, max);
@@ -291,7 +290,9 @@ function renderPagination(total) {
             item.addEventListener('click', event => {
                 event.preventDefault();
                 page = +item.getAttribute('href');
-                switchPage();
+                fetch(`${url}&s=${searchValue}&type=${typeValue}&page=${page}`)
+                    .then(response => response.json())
+                    .then(data => generateResultCards(data));
             });
         }
     });
@@ -309,11 +310,4 @@ function paginationMath(current, step, max) {
             function(a) {
                 return step ? 1 === a || a === current || a === max || a <= current + step && a >= current - step : !0;
             });
-}
-
-function switchPage() {
-    "use strict";
-    fetch(`${url}&s=${searchValue}&type=${typeValue}&page=${page}`)
-        .then(response => response.json())
-        .then(data => generateResultCards(data));
 }
