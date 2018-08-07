@@ -2,26 +2,44 @@
 .error {background-color: coral !important;}
 .error::-webkit-input-placeholder {color: white !important;}
 .error::-moz-placeholder {color: white !important;}
-.visible {display: block !important;}
 
-.alert-message {
-	position: absolute;
-	display: none;
-	font-weight: bold;
-	width: 100%;
-	bottom: -35px;
-	right: 16px;
-	text-align: right;
-	font-size: 1em;
+.display-none {
+    display: none;
 }
 
-.header {position: relative;}
+.form-control {
+    box-shadow: inset 0px 0px 8px 1px rgba(0,0,0,0.5);
+    border-width: 0!important;
+}
+
+.alert-message {
+    position: absolute!important;
+    font-family: 'Century gothic';
+    bottom: -76px;
+    right: 0;
+    font-size: 1em;
+    padding: 10px!important;
+    border-left-width: 10px !important;
+    border-right-width: 0 !important;
+    border-radius: 0px !important;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transition: opacity 1s;
+	animation: show-alert 1s linear;
+}
+
+@keyframes show-alert {
+	from {transform: translateX(235px);}
+	to {transform: translateX(0);}
+}
+
+.background-wrap {position: relative;}
 
 .background-wrap::before {
 	content: '';
 	position: absolute;
-	height: calc(100vh - 70px);
-	top: 70px;
+	height: calc(100vh - 66px);
+	top: -70px;
 	left: 0;
 	right: 0;
 	bottom:0;
@@ -40,12 +58,16 @@
 	to {opacity: .2;}
 }
 
+/*.background-wrap:enabled {
+    animation: show-bg 2s linear;
+}*/
+
 .background-wrap::after {
 	content: '';
 	position: absolute;
-	height: calc(100vh - 74px);
+	height: calc(100vh - 70px);
 	width: 90%;
-	top: 74px;
+	top: -66px;
 	left: 0;
 	right: 0;
 	bottom:0;
@@ -73,13 +95,17 @@
 	}
 }
 
+.main {
+    margin-top: 70px;
+}
+
 .card {
 	width: 14rem;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-img-top {height: 20rem;}
-.card-title {height: 48px;}
+.card-title {flex-grow: 1;}
 .poster-wrap {position: relative;}
 .poster-wrap:hover::after {opacity: 1;}
 .poster-wrap::after {
