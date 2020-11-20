@@ -1,0 +1,69 @@
+@charset "utf-8";
+fieldset {
+	width: 400px;
+	padding: 15px;
+	margin: auto;
+	background-color: #fc0;
+	border-radius: 5px;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+	}
+.form_header {
+	display: flex;
+	justify-content: space-between;
+}
+.item_left {
+	display: table;
+	border-spacing: 5px;
+	width: 300px;
+}
+.table_row {
+	display: table-row;
+}
+.form_header_label, .form_header_input, .form_footer_label, .form_footer_input {
+	display: table-cell;
+	padding: 5px;
+	vertical-align: middle;
+}
+.form_footer_label {
+	width: 78px;
+}
+.item_range {
+	display: table;
+	width: 100%;
+}
+label {
+	font-family: 'Century Gothic';
+	color: black;
+}
+.form_header_input {
+	width: 150px;
+}
+.form_footer_input {
+	width: 90%;
+}
+.form_header_input[name="Skin"] {
+	width: 20px;
+}
+
+.item_range .table_row:nth-child(even) { background-color: #ccc; }
+.item_range .table_row:nth-child(odd)  { background-color: #eee; }
+
+.form_header {
+	display: flex
+}
+.form_avatar {
+	width: 99px;
+	height: 99px;
+	border-radius: 50%;
+}
+.item_submit {
+	margin-top: 10px;
+	text-align: center;
+}
+.form_btn_submit {
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #ff0000;
+	color: white;
+	font-size: 16px;
+}

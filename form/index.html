@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Form</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<form id="form_hero" action="./hero" target="_blank" method="post" novalidate>
+	<fieldset class="form_container">
+        <div class="form_header">
+            <div class="item_left">
+                <div class="table_row">
+                    <label class="form_header_label" for="form_name">Name:</label>
+                    <input class="form_header_input" id="form_name" type="text" name="Name" placeholder="Name" required><br>
+                </div>
+                <div class="table_row">
+                    <label class="form_header_label" for="form_email">E-Mail:</label>
+                    <input class="form_header_input" id="form_email" type="email" name="E-mail" placeholder="E-mail" required><br>
+                </div>
+                <div class="table_row">
+                    <label class="form_header_label" for="age">Age:</label>
+                    <input class="form_header_input" id="form_age" type="number" name="Age" step="1" min="18" value="18"><br>
+                </div>
+                <div class="table_row">
+                    <label class="form_header_label" for="skin">Skin:</label>
+                    <input class="form_header_input" id="form_skin" type="color" name="Skin" value="#ff0000">
+                </div>
+            </div>
+			<div class="item_right">
+			    <img class="form_avatar" src="img/Picture_4.jpg" alt=""/>
+		    </div>
+        </div>
+        <div class="form_footer">
+            <div class="item_range">
+                <div class="table_row">
+                    <label class="form_footer_label" for="form_strength">Strength:</label>
+                    <input class="form_footer_input" id="form_strength" type="range" name="Strength">
+                </div>
+                <div class="table_row">
+                    <label class="form_footer_label" for="form_stamina">Stamina:</label>
+                    <input class="form_footer_input" id="form_stamina" type="range" name="Stamina">
+                </div>
+                <div class="table_row">
+                    <label class="form_footer_label" for="form_agility">Agility:</label>
+                    <input class="form_footer_input" id="form_agility" type="range" name="Agility">
+                </div>
+            </div>
+            <div class="item_submit">
+                <button class="form_btn_submit" type="submit">Submit</button>
+            </div>
+        </div>
+	</fieldset>
+</form>
+</body>
+</html>
