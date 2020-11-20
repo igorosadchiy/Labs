@@ -1,0 +1,44 @@
+@padd: 15px 300px;
+@back-col: lightcoral; // background color for header and footer
+@back-col-gr: lightgray;
+@colr: white;  //header and footer color of font
+
+.hdr-ftr {
+	background: @back-col;
+	padding: @padd;
+	color: @colr;
+	box-sizing: border-box;
+}
+
+header {
+	.hdr-ftr;
+	.logo {
+		text-transform: uppercase;
+		font-size: 28px;
+		font-family: sans-serif;
+		font-weight: bold;
+		text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+		float: left;
+		&:hover {
+			text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+			cursor: pointer;
+		}
+	}
+	.menu {
+		float: right;
+		margin: 0;
+		.label-menu {
+			font-size: 20px;
+		}
+		.sel-menu {
+			border: 1px solid white;
+			background: @back-col;
+			padding: 5px 30px;
+			margin-left: 15px;
+		}
+	}
+}
+
+footer {
+	.hdr-ftr;
+}

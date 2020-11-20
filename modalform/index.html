@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Modal form</title>
+	<link href="style.css" rel="stylesheet" type="text/css">	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+	<script src="jquery.maskedinput.min.js" defer></script>
+<script type="text/javascript">
+  $(function() {
+    // Кнопка "Закажите звонок"
+    $(".makecall").click(function(){
+      $(".popup_callback").fadeIn(100);
+      return false;
+    });
+	$(".buy_now").click(function(){
+      $(".buy_popup_callback").fadeIn(100);
+      return false;
+    });
+    $(".popup_close").click(goodClose);
+	$(".buy_popup_close").click(buy_goodClose);
+    function goodClose() {
+        $(".popup_good").fadeOut(50);
+		$(".popup_phone").fadeIn(50);
+		$("input[name=imya]").val("");
+		$("input[name=phone]").val("");
+        $(".popup_callback").fadeOut(200);
+    };
+	function buy_goodClose() {
+		$(".buy_popup_good").fadeOut(50);
+		$(".buy_popup_phone").fadeIn(50);
+		$("input[name=buy_imya]").val("");
+		$("input[name=buy_phone]").val("");
+        $(".buy_popup_callback").fadeOut(200);
+    };
+    // $("input[name=phone]").mask("(999) 999-99-99");
+	// $("input[name=buy_phone]").mask("(999) 999-99-99");
+    // $("input[name=tel]").mask("(999) 999-99-99");
+
+    // Если нажали кнопку отправить (обратный звонок)
+    $("#request").click(function() {
+
+        // Номер телефона
+      var phone = $("input[name=phone]").val();
+	  var imya = $("input[name=imya]").val();
+      if(phone == "") {
+        $("input[name=phone]").css("background-color", "orangered");
+            return;
+      }
+        $.ajax({
+            type: "POST",
+            url: "/mail.php",
+            data: {
+                phone:phone,
+				imya:imya
+            },
+            success: function(data){
+				gtag('event', 'tel_callback', { 'event_category': 'tel', 'event_action': 'callback', });
+                // ga('send', 'event', 'callback','clicked');
+            }
+        });
+        $(".popup_phone").fadeOut(200);
+        $(".popup_good").fadeIn(400);
+        setTimeout(goodClose, 4000);
+    });
+
+	// Если нажали кнопку отправить (заказать)
+    $("#buy_request").click(function() {
+
+        // Номер телефона
+      var phone = $("input[name=buy_phone]").val();
+	  var imya = $("input[name=buy_imya]").val();
+      if(phone == "") {
+        $("input[name=phone]").css("background-color", "orangered");
+            return;
+      }
+        $.ajax({
+            type: "POST",
+            url: "/mail1.php",
+            data: {
+                phone:phone,
+				imya:imya
+            },
+            success: function(data){
+				gtag('event', 'sale_callback', { 'event_category': 'sale', 'event_action': 'callback', 'value': 70 });
+                // ga('send', 'event', 'order','clicked');
+            }
+        });
+        $(".buy_popup_phone").fadeOut(200);
+        $(".buy_popup_good").fadeIn(400);
+        setTimeout(buy_goodClose, 4000);
+    });
+  });
+</script>
+</head>
+
+<body>
+	<div class="popup_callback">
+  		<div class="popup_phone">
+			<a class="popup_close" title="Закрыть"><img src="form_close.png" width="41" height="41" alt="Закрыть" /></a>
+			<p class="popup_phone_title">Ваше имя</p>
+			<input type="text" name="imya"/>
+			<p class="popup_phone_title">Введите свой номер телефона</p>
+			<input type="text" name="phone"/>
+			<a class="button" id="request">Отправьте заявку</a>
+			<p class="popup_time_title"><em>* заявка будет обработана<br />с 9:00 до 19:00</em></p>
+  		</div>
+		<div class="popup_good">
+			<a class="popup_close" title="Закрыть"><img src="form_close.png" width="41" height="41" alt="Закрыть" /></a>
+			<p class="popup_good_title">Заявка отправлена!<br />В ближайшее время мы Вам перезвоним</p>
+		</div>
+	</div>
+	<main class="main">
+		<button class="makecall">Обратный звонок</button>
+	</main>
+	<!--<script src="script.js"></script>-->
+</body>
+</html>

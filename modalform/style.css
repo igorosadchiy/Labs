@@ -1,0 +1,128 @@
+@charset "utf-8";
+.main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+button {
+	padding: 10px;
+	margin: 6px;
+	font-family: 'Century Gothic';
+	font-size: 16px;
+	border-radius: 8px;
+	color: #FFFFFF;
+	background: linear-gradient(to bottom right, red, yellow);
+	text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	cursor: pointer;
+	border: 1px solid #ffffff;
+	letter-spacing: 1px;
+}
+button:hover {
+	opacity: 0.6;
+	transition-duration: .4s;
+	border: 1px solid #0EA690;
+}
+
+/* Модальная форма */
+
+.form_tel {
+	width: 200px;
+	position: absolute;
+	right: 15px;
+	top: 7px;
+	color: brown;
+}
+.tel_title {
+	font-size: 24px;
+	line-height: 29px;
+	font-weight: bold;
+	margin: 0 0 5px;
+}
+/*POPUP CALLBACK*/
+.popup_callback, .buy_popup_callback {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1010;
+}
+.popup_good {
+	display: none;
+}
+.popup_phone, .popup_good {
+	width: 250px;
+	height: 250px;
+	padding: 10px 15px;
+	position: fixed;
+	top: 50%;
+	margin-top: -85px;
+	left: 50%;
+	margin-left: -140px;
+	z-index: 1500;
+	background: url("form_bg.jpg");
+	border-radius: 15px;
+}
+.popup_phone input, .popup_good input {
+	width: 225px;
+	height: 40px;
+	border-radius: 5px;
+	padding: 0 5px 0;
+	margin: 10px 0 10px 4px;
+	font-size: 16pt;
+	border: 2px solid gray;
+	letter-spacing: 1px;
+	text-align: center;
+}
+.popup_phone input:focus, .popup_good input:focus, .popup_phone input:active, .popup_good input:active {
+	border: 2px solid gray;
+	outline: none;
+}
+.popup_close {
+	color: brown;
+	position: fixed;
+	margin-left: 270px;
+	margin-top: -55px;
+	cursor: pointer;
+}
+.call {
+	margin-left: 22px;
+}
+.popup_phone_title {
+	color: black;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+.popup_time_title {
+	color: black;
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+}
+.popup_good_title {
+	margin: 17px 0 0px 0px;
+	color: black;
+	font-size: 20px;
+	line-height: 36px;
+	text-align: center;
+}
+#request {
+	width: 160px;
+	margin: 15px auto 0;
+	display: block;
+	font-size: 20px;
+	text-align: center;
+	border: 1px solid gray;
+	padding: 2px 6px;
+	border-radius: 5px;
+	background-color: #1F497D;
+	color: white;
+}
+#request:hover {
+	cursor: pointer;
+}
